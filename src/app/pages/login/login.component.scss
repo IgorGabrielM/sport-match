@@ -1,0 +1,26 @@
+.container {
+  width: 50dvw;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+
+  .form {
+    width: 50%;
+    height: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    img {
+      width: 50%;
+      margin: 0 auto 10px auto;
+    }
+  }
+}
+
+.bg-color {
+  width: 50dvw;
+  height: 100dvh;
+  background-color: #4BAEFF;
+}
