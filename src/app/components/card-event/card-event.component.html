@@ -1,14 +1,14 @@
-<div class="rounded-md bg-[color:#262D34]">
-  <div class="bg-gray-200 rounded-md w-full h-48"></div>
-  <div class="p-5 flex flex-col gap-1">
-    <span class="text-[13px] text-gray-300">Rua desconhecida, 123</span>
+<div class="rounded-md bg-[color:#262D34] w-full h-[24rem]" (click)="navigateToEventDetail()">
+  <img [src]="event.imagem" alt="Imagem do envento" class="rounded-md w-full h-48 object-cover">
+  <div class="p-5 h-[12rem] flex flex-col gap-1">
+    <span class="text-[13px] text-gray-300">{{ event.local }}</span>
     <div class="flex flex-col">
-      <span class="text-lg font-bold">Título</span>
-      <span class="text-[13px] text-md font-normal">Texto de descricao</span>
+      <span class="text-lg font-bold">{{ event.nome }}</span>
+      <span class="text-[13px] text-md font-normal">{{ event.descricao }}</span>
     </div>
-    <div class="flex items-center gap-1 text-[11px]">
+    <div class="flex h-fit items-center mt-auto gap-1 text-[11px]">
       <i class="ph ph-clock"></i>
-      <span>07/02/2026</span>
+      <span>{{ event.dataHora | date }}</span>
     </div>
   </div>
 </div>

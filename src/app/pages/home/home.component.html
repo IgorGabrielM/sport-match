@@ -20,7 +20,7 @@
         <div class="w-44">
           <label for="countries" class="block mb-0.5 text-[12px] font-medium text-gray-400">Selecione a categoria</label>
           <select id="countries" formControlName="category" class="bg-transparent border border-gray-600 text-gray-400 text-sm rounded-lg focus:ring-white block w-full p-2.5">
-            <option selected>Categoria</option>
+            <option selected value="categoria">Categoria</option>
             <option value="corrida">Corrida</option>
             <option value="escalada">Escalada</option>
             <option value="ciclismo">Ciclismo</option>
@@ -38,11 +38,7 @@
       </div>
     </div>
     <div class="mt-10 grid grid-cols-4 gap-5">
-      <app-card-event></app-card-event>
-      <app-card-event></app-card-event>
-      <app-card-event></app-card-event>
-      <app-card-event></app-card-event>
-      <app-card-event></app-card-event>
+      <app-card-event *ngFor="let event of events" [event]="event"></app-card-event>
     </div>
   </div>
 </div>

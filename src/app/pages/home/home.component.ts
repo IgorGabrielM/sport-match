@@ -5,6 +5,9 @@ import {HeaderComponent} from '../../components/header/header.component';
 import {CommonModule} from '@angular/common';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CardEventComponent} from '../../components/card-event/card-event.component';
+import {EventService} from '../../data/services/event.service';
+import {EventModel} from '../../data/models/event.model';
+import { HttpClientModule } from '@angular/common/http'
 
 @Component({
   selector: 'app-home',
@@ -13,31 +16,45 @@ import {CardEventComponent} from '../../components/card-event/card-event.compone
     CardEventComponent,
     CommonModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  providers: [
+    EventService
+  ],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeComponent implements OnInit {
   searchForm: FormGroup;
+  events: EventModel[] = [];
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private eventService: EventService
   ) {}
 
   ngOnInit() {
     this.initForm();
+    this.loadEvent();
   }
 
   initForm(){
     this.searchForm = this.fb.group({
-      category: ['', [Validators.required]],
+      category: ['categoria', [Validators.required]],
       address: ['', [Validators.required]],
       nameEvent: ['', [Validators.required]]
     });
+  }
+
+  loadEvent() {
+    this.eventService.getEvents().subscribe((events) => {
+      console.log(events);
+      this.events = events;
+    })
   }
 
   logout() {

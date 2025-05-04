@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div class="w-9/12 m-auto">
+  <div class="evento-container glass-effect rounded-[0px]" [style.background-image]="'url(' + event.imagem + ')'">
+    <div class="relative w-full h-80 flex justify-around items-center">
+        <div class="flex flex-col gap-2">
+          <p class="w-fit font-bold border-[0.5px] border-[color:#4BAEFF] rounded-full text-[10px] py-1 px-2.5 mb-1">Com especialistas</p>
+          <span class="text-[13px] text-gray-200">{{ event.local }}</span>
+          <div class="flex flex-col">
+            <span class="text-lg font-bold">{{ event.nome }}</span>
+            <span class="text-[13px] text-md font-normal">{{ event.descricao }}</span>
+          </div>
+          <div class="flex h-fit items-center mt-auto gap-1 text-[11px]">
+            <i class="ph ph-clock"></i>
+            <span>{{ event.dataHora | date }}</span>
+          </div>
+          <button type="button" class="w-fit rounded-md text-[10px] px-4 py-2 bg-[color:#4BAEFF] font-bold hover:bg-sky-600 cursor-pointer">Marcar presença</button>
+        </div>
+        <img [src]="event.imagem" alt="Imagem do evento" class="object-cover w-4/12 h-48 rounded-sm">
+    </div>
+  </div>
+
+  <div class="my-20">
+    <span class="font-bold text-xl">Descrição do evento</span>
+    <p class="mt-5 text-sm font-medium">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod ut lacus sed pellentesque. Morbi ut facilisis lorem, vel sollicitudin sem. In fringilla ipsum quis fermentum dictum. Morbi placerat scelerisque tortor, nec porta enim porta eu. Ut at rhoncus nisl. Aliquam pretium, tortor sit amet laoreet ultrices, erat dolor aliquet ligula, quis pharetra orci leo ac ante. Vivamus nibh felis, bibendum vitae tristique at, rhoncus finibus ex. Sed in congue enim. Aliquam nec sapien in libero ullamcorper accumsan. Sed semper sapien vel dolor varius tincidunt. Praesent iaculis tempor volutpat.
+    </p>
+    <p class="mt-5 text-sm font-medium">
+      Curabitur ut iaculis nibh, vel bibendum libero. Nullam at hendrerit nunc. Donec vestibulum lorem tempus, imperdiet mauris non, tincidunt neque. Suspendisse potenti. Nam blandit dolor commodo nulla auctor, vitae aliquam nibh mattis. Vivamus id dictum augue, sed consequat ante. In hac habitasse platea dictumst.
+    </p>
+    <p class="mt-5 text-sm font-medium">
+      Curabitur dui ipsum, tempus nec lorem eu, dictum ultricies elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam maximus, tellus non accumsan bibendum, diam risus euismod odio, vel euismod est dui et nunc. In hac habitasse platea dictumst. Mauris eu commodo tellus. Maecenas diam velit, aliquet vel quam eget, bibendum convallis ipsum. In varius, nisl eget finibus euismod, nibh magna scelerisque ante, sed fermentum arcu ligula ac tellus. Nunc euismod tempor massa vitae egestas. Praesent purus mi, accumsan ut pellentesque vel, laoreet egestas tortor. Praesent imperdiet at orci sit amet pulvinar. Vivamus ligula nunc, tincidunt vitae risus id, suscipit aliquet risus. Maecenas at convallis dolor.
+    </p>
+  </div>
+</div>

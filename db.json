@@ -1,0 +1,54 @@
+{
+  "events": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "nome": "Corrida Noturna",
+      "dataHora": "2025-06-22T19:00:00",
+      "participantes": 300,
+      "local": "Avenida Central",
+      "descricao": "Uma corrida iluminada pela cidade, trazendo energia e diversão.",
+      "imagem": "https://images.unsplash.com/photo-1706459418431-f68031d1b006?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "tag": "corrida"
+    },
+    {
+      "id": "660c86e9-b2c2-4c7b-8e62-d3fedd680000",
+      "nome": "Torneio de Tênis",
+      "dataHora": "2025-07-15T10:00:00",
+      "participantes": 24,
+      "local": "Quadras Municipais",
+      "descricao": "Competição acirrada entre os melhores tenistas da região.",
+      "imagem": "https://images.unsplash.com/flagged/photo-1576972405668-2d020a01cbfa?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "tag": "tênis"
+    },
+    {
+      "id": "7fa2e932-72b3-4eef-96ee-95d6c7f70000",
+      "nome": "Desafio de Natação",
+      "dataHora": "2025-08-05T08:00:00",
+      "participantes": 50,
+      "local": "Piscina Olímpica",
+      "descricao": "Prova de resistência para nadadores experientes.",
+      "imagem": "https://images.unsplash.com/photo-1560090995-01632a28895b?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3dpbW1pbmd8ZW58MHx8MHx8fDA%3D",
+      "tag": "natação"
+    },
+    {
+      "id": "8a4b5d92-49e9-4d29-b833-1f23abf60000",
+      "nome": "Triatlo Urbano",
+      "dataHora": "2025-09-12T06:30:00",
+      "participantes": 100,
+      "local": "Centro Esportivo",
+      "descricao": "Uma combinação de natação, ciclismo e corrida para desafiar atletas.",
+      "imagem": "https://images.unsplash.com/photo-1627900258552-50850df9dbc5?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "tag": "triatlo"
+    },
+    {
+      "id": "9e2f3b46-6c61-4bdf-9345-6373bfe80000",
+      "nome": "Campeonato de Skate",
+      "dataHora": "2025-10-20T15:00:00",
+      "participantes": 40,
+      "local": "Praça do Skate",
+      "descricao": "Evento para skatistas exibirem suas melhores manobras.",
+      "imagem": "https://images.unsplash.com/photo-1569074187119-c87815b476da?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNrYXRlfGVufDB8fDB8fHww",
+      "tag": "skate"
+    }
+  ]
+}
