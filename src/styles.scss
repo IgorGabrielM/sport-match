@@ -1,11 +1,9 @@
 @import 'tailwindcss/base';
-
 @import 'tailwindcss/components';
-
 @import 'tailwindcss/utilities';
-/* You can add global styles to this file, and also import other style files */
+
 body {
-  background-color: #121212; /* Fundo escuro */
+  background-color: #1E1E1E; /* Fundo escuro */
   color: #ffffff; /* Texto claro */
   font-family: 'Poppins', sans-serif;
 }
