@@ -31,4 +31,10 @@
       Curabitur dui ipsum, tempus nec lorem eu, dictum ultricies elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam maximus, tellus non accumsan bibendum, diam risus euismod odio, vel euismod est dui et nunc. In hac habitasse platea dictumst. Mauris eu commodo tellus. Maecenas diam velit, aliquet vel quam eget, bibendum convallis ipsum. In varius, nisl eget finibus euismod, nibh magna scelerisque ante, sed fermentum arcu ligula ac tellus. Nunc euismod tempor massa vitae egestas. Praesent purus mi, accumsan ut pellentesque vel, laoreet egestas tortor. Praesent imperdiet at orci sit amet pulvinar. Vivamus ligula nunc, tincidunt vitae risus id, suscipit aliquet risus. Maecenas at convallis dolor.
     </p>
   </div>
+  <div class="mt-10">
+    <span class="font-bold text-xl">Eventos relacionados</span>
+    <div class="mt-2 grid grid-cols-4 gap-5">
+      <app-card-event *ngFor="let event of events" [event]="event"></app-card-event>
+    </div>
+  </div>
 </div>

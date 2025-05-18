@@ -8,6 +8,7 @@ import {CardEventComponent} from '../../components/card-event/card-event.compone
 import {EventService} from '../../data/services/event.service';
 import {EventModel} from '../../data/models/event.model';
 import { HttpClientModule } from '@angular/common/http'
+import {SlideEventComponent} from '../../components/slide-event/slide-event.component';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http'
     CardEventComponent,
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SlideEventComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

@@ -1,11 +1,5 @@
 <app-header></app-header>
 <div class="w-9/12 m-auto">
-  <swiper-container pagination="true">
-    <swiper-slide *ngFor="let event of events.reverse().slice(0, 3)">
-      <app-slide-event [event]="event"></app-slide-event>
-    </swiper-slide>
-  </swiper-container>
-
   <div>
     <div class="flex justify-between items-center mt-16">
       <span class="text-3xl font-bold">Eventos</span>

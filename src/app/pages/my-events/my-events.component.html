@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="w-9/12 m-auto">
+  <div>
+    <div class="flex justify-between items-center mt-16">
+      <span class="text-3xl font-bold">Meus eventos</span>
+    </div>
+    <div class="mt-10 grid grid-cols-4 gap-5">
+      <app-card-event *ngFor="let event of events" [event]="event"></app-card-event>
+    </div>
+  </div>
+</div>
