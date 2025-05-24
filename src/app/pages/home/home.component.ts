@@ -36,6 +36,7 @@ import {ModalComponent} from '../../components/modal/modal.component';
 export class HomeComponent implements OnInit {
   searchForm: FormGroup;
   events: EventModel[] = [];
+  allEvents: EventModel[] = [];
 
   constructor(
     private authService: AuthService,
@@ -51,7 +52,6 @@ export class HomeComponent implements OnInit {
 
   initForm(){
     this.searchForm = this.fb.group({
-      category: ['categoria', [Validators.required]],
       address: ['', [Validators.required]],
       nameEvent: ['', [Validators.required]]
     });
@@ -59,13 +59,17 @@ export class HomeComponent implements OnInit {
 
   loadEvent() {
     this.eventService.getEvents().subscribe((events) => {
-      console.log(events);
       this.events = events;
+      this.allEvents = events;
     })
   }
 
-  logout() {
-    this.authService.logout();
-    this.router.navigate(['/login']);
+  filterEvents() {
+    const { address, nameEvent } = this.searchForm.value;
+
+    this.events = this.allEvents.filter(event =>
+      event.location.toLowerCase().includes(address.toLowerCase()) &&
+      event.name.toLowerCase().includes(nameEvent.toLowerCase())
+    );
   }
 }

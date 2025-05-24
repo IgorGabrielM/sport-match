@@ -49,7 +49,6 @@ export class CreateUserComponent implements OnInit {
       interests: []
     }
     this.authService.createUser(payload).subscribe((response: any) => {
-      console.log(response);
       if (response.idUser){
         localStorage.setItem('idUser', response.idUser);
         this.router.navigate(['/']);

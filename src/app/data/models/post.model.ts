@@ -1,4 +1,5 @@
 export class PostModel {
+  idPost?: number;
   title: string;
   text: string;
   imageUrl: string;
@@ -6,4 +7,7 @@ export class PostModel {
   commentsCount?: number;
   idUser?: number;
   interestIds?: number[];
+  updatedAt?: Date;
+  user?: any
+  likes?: any[];
 }

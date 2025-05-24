@@ -16,11 +16,9 @@ export class ImageInputComponent {
     if (file) {
       try {
         const blob = new Blob([file], { type: file.type });
-        const imageUrl = await this.uploadImageToCloudinary(file); // Envia para Cloudinary
-        this.imageUploaded.emit(imageUrl); // Emite a URL para o pai
-        console.log('Imagem enviada com sucesso:', imageUrl);
+        const imageUrl = await this.uploadImageToCloudinary(file);
+        this.imageUploaded.emit(imageUrl);
       } catch (error) {
-        console.error('Erro ao enviar imagem:', error);
       }
     }
   }

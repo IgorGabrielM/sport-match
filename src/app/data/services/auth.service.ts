@@ -22,7 +22,11 @@ export class AuthService {
     return this.http.post(`https://sport-match-ccc44204aa55.herokuapp.com/users`, user);
   }
 
+  getUser(){
+    return this.http.get(`https://sport-match-ccc44204aa55.herokuapp.com/users/${localStorage.getItem('idUser')}`);
+  }
+
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('userToken');
+    return !!localStorage.getItem('idUser');
   }
 }

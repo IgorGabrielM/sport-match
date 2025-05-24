@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-modal-post *ngIf="isModalOpen" [isOpen]="isModalOpen" (closeEvent)="onModalClose()"></app-modal-post>
 <div class="w-9/12 m-auto">
-  <div>
+  <div *ngIf="isAuthenticated()">
     <div class="flex justify-between items-center mt-2 bg-[color:#262D34] p-3 py-4 rounded-xl">
       <div class="w-full flex justify-between items-center gap-4" [formGroup]="searchForm">
         <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="Imagem do usuário"
@@ -13,6 +13,39 @@
         </button>
       </div>
     </div>
+  </div>
+  <div>
+    <div class="mt-10 flex flex-col gap-5">
+      <div *ngFor="let post of posts" class="bg-[color:#262D34] p-5 rounded-xl">
+        <div class="flex gap-2">
+          <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="Imagem do usuário"
+               class="w-10 h-10 object-cover rounded-full border-4"/>
+          <div>
+            <p class="text-sm font-bold">{{ post?.user?.name }}</p>
+            <p class="text-xs">{{ post.updatedAt | date }}</p>
+          </div>
+        </div>
+        <div class="flex mb-2 mt-6">
+          <div class="py-1 px-4 rounded-full bg-[color:#2C353D]">
+            <p>Teste</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <p class="font-bold text-lg">{{ post.title }}</p>
+          <p class="text-sm">{{ post.text }}</p>
+          <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="imagem enviada" class="w-full h-64 object-cover rounded-lg">
+        </div>
 
+        <div class="w-full flex justify-between items-end mt-4 pt-3 pb-1">
+          <div class="flex items-end text-[#C5D0E6] w-2/3 gap-16">
+            <div class="flex items-end gap-2" (click)="sendLike(post)">
+              <i *ngIf="!isLiked(post)" class="ph ph-heart text-xl"></i>
+              <i *ngIf="isLiked(post)" class="ph-fill ph-heart text-xl bg-white p-2 rounded"></i>
+              <p class="text-sm">{{ post.likes.length }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

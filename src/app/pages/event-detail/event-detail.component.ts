@@ -4,8 +4,9 @@ import {HeaderComponent} from '../../components/header/header.component';
 import {EventModel} from '../../data/models/event.model';
 import {HttpClientModule} from '@angular/common/http';
 import {EventService} from '../../data/services/event.service';
-import {DatePipe, NgForOf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {CardEventComponent} from '../../components/card-event/card-event.component';
+import {AuthService} from '../../data/services/auth.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -14,22 +15,26 @@ import {CardEventComponent} from '../../components/card-event/card-event.compone
     HttpClientModule,
     DatePipe,
     CardEventComponent,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.scss',
   standalone: true,
   providers: [
-    EventService
+    EventService,
+    AuthService
   ],
 })
 export class EventDetailComponent implements OnInit {
   event: EventModel;
   events: EventModel[] = [];
+  showToast: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    private authService: AuthService,
   ) {
   }
 
@@ -43,8 +48,16 @@ export class EventDetailComponent implements OnInit {
 
   loadEvent() {
     this.eventService.getEvents().subscribe((events) => {
-      console.log(events);
       this.events = events;
     })
+  }
+
+  participar(){
+    this.eventService.participar(this.event.id).subscribe((response) => {
+      this.showToast = true;
+      setTimeout(() => {
+        this.showToast = false;
+      }, 3000);
+    });
   }
 }

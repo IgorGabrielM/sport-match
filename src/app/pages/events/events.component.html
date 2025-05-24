@@ -13,15 +13,6 @@
       <span class="text-3xl font-bold">Eventos</span>
 
       <div class="flex items-center gap-4" [formGroup]="searchForm">
-        <div class="w-44">
-          <label for="countries" class="block mb-0.5 text-[12px] font-medium text-gray-300">Selecione a categoria</label>
-          <select id="countries" formControlName="category" class="bg-gray-800 border border-gray-600 text-gray-300 text-sm rounded-lg focus:ring-white block w-full p-2.5">
-            <option selected value="categoria">Categoria</option>
-            <option value="corrida">Corrida</option>
-            <option value="escalada">Escalada</option>
-            <option value="ciclismo">Ciclismo</option>
-          </select>
-        </div>
         <div>
           <label for="address" class="block mb-0.5 text-[12px] font-medium text-gray-300">Endereço</label>
           <input type="text" id="address" formControlName="address" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="Bairro, Rua, etc..." required />
@@ -30,7 +21,7 @@
           <label for="nameEvent" class="block mb-0.5 text-[12px] font-medium text-gray-300">Nome do evento</label>
           <input type="text" id="nameEvent" formControlName="nameEvent" class="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="Nome do evento" required />
         </div>
-        <button type="button" class="h-full mt-auto font-bold rounded-lg text-sm px-5 py-2.5 bg-blue-600 hover:bg-blue-700 border border-blue-600 cursor-pointer">Pesquisar</button>
+        <button (click)="filterEvents()" type="button" class="h-full mt-auto font-bold rounded-lg text-sm px-5 py-2.5 bg-blue-600 hover:bg-blue-700 border border-blue-600 cursor-pointer">Pesquisar</button>
       </div>
     </div>
     <div class="mt-10 grid grid-cols-4 gap-5">

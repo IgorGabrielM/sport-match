@@ -44,7 +44,6 @@ export class ModalComponent {
       location: this.local,
       name: this.nome,
     }
-    console.log("Payload do evento:", payload);
     this.eventService.createEvent(payload).subscribe(() => {
       this.closeEvent.emit();
     })
@@ -52,6 +51,5 @@ export class ModalComponent {
 
   onImageReceived(imageUrl: string) {
     this.imagem = imageUrl;
-    console.log("Imagem recebida no componente pai:", imageUrl);
   }
 }

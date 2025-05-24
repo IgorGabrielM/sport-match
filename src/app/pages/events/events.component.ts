@@ -34,6 +34,7 @@ export class EventsComponent implements OnInit {
   isModalOpen: boolean = false;
   searchForm: FormGroup;
   events: EventModel[] = [];
+  allEvents: EventModel[] = [];
 
   constructor(
     private router: Router,
@@ -47,14 +48,12 @@ export class EventsComponent implements OnInit {
   }
 
   onModalClose() {
-    console.log("Modal fechado");
     this.loadEvent();
     this.isModalOpen = false;
   }
 
   initForm(){
     this.searchForm = this.fb.group({
-      category: ['categoria', [Validators.required]],
       address: ['', [Validators.required]],
       nameEvent: ['', [Validators.required]]
     });
@@ -62,8 +61,16 @@ export class EventsComponent implements OnInit {
 
   loadEvent() {
     this.eventService.getEvents().subscribe((events) => {
-      console.log(events);
       this.events = events;
+      this.allEvents = events;
     })
+  }
+
+  filterEvents() {
+    const { address, nameEvent } = this.searchForm.value;
+    this.events = this.allEvents.filter(event =>
+      event.location.toLowerCase().includes(address.toLowerCase()) &&
+      event.name.toLowerCase().includes(nameEvent.toLowerCase())
+    );
   }
 }

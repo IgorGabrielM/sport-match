@@ -1,22 +1,23 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {EventService} from '../../data/services/event.service';
-import {EventModel} from '../../data/models/event.model';
 import {ImageInputComponent} from '../image-input/image-input.component';
 import {FormsModule} from '@angular/forms';
 import {NgIf} from '@angular/common';
 import {PostService} from '../../data/services/post.service';
 import {PostModel} from '../../data/models/post.model';
+import {AuthService} from '../../data/services/auth.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-modal-post',
   imports: [
     ImageInputComponent,
     FormsModule,
-    NgIf
+    NgIf,
+    HttpClientModule,
   ],  templateUrl: './modal-post.component.html',
   styleUrl: './modal-post.component.scss',
   providers: [
-    PostService
+    PostService,
   ],
   standalone: true,
 })
@@ -28,7 +29,7 @@ export class ModalPostComponent {
   imagem: string
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
   ) {}
 
   closeModal() {
@@ -43,9 +44,8 @@ export class ModalPostComponent {
       likesCount: 0,
       commentsCount: 0,
       interestIds: [],
-      idUser: 1
+      idUser: Number(localStorage.getItem('idUser'))
     }
-    console.log("Payload do evento:", payload);
     this.postService.createPost(payload).subscribe(() => {
       this.closeEvent.emit();
     })
@@ -53,6 +53,5 @@ export class ModalPostComponent {
 
   onImageReceived(imageUrl: string) {
     this.imagem = imageUrl;
-    console.log("Imagem recebida no componente pai:", imageUrl);
   }
 }

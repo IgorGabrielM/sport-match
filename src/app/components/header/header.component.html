@@ -11,10 +11,6 @@
         <i class="ph ph-calendar-blank"></i>
         <span>Eventos</span>
       </div>
-      <div class="header-item" [routerLink]="['/my-events']">
-        <i class="ph ph-calendar-check"></i>
-        <span>Meus eventos</span>
-      </div>
 
       <button *ngIf="!isAuthenticated()" (click)="login()" type="button" class="rounded-lg text-sm px-10 py-1.5 me-2 mb-2 bg-[color:#4BAEFF] font-bold hover:bg-sky-600 cursor-pointer">Login</button>
       <button *ngIf="isAuthenticated()" (click)="logout()" type="button" class="rounded-lg text-sm px-10 py-1.5 me-2 mb-2 bg-red-500 font-bold hover:bg-red-600 cursor-pointer">Logout</button>

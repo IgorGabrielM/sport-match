@@ -15,6 +15,12 @@ export class EventService {
     return this.http.post<EventModel>(this.apiUrl, event);
   }
 
+  participar(eventId: number): Observable<EventModel> {
+    return this.http.post<EventModel>(
+      `${this.apiUrl}/${eventId}/participants/${localStorage.getItem('idUser')}`,
+      {eventId, userId: Number(localStorage.getItem('idUser'))});
+  }
+
   getEvents(): Observable<EventModel[]> {
     return this.http.get<EventModel[]>(this.apiUrl);
   }

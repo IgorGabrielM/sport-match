@@ -39,7 +39,6 @@ export class MyEventsComponent implements OnInit{
 
   loadEvent() {
     this.eventService.getEvents().subscribe((events) => {
-      console.log(events);
       this.events = events;
     })
   }
