@@ -7,9 +7,13 @@ import {EventModel} from '../models/event.model';
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'http://localhost:3000/events'; // URL do JSON Server
+  private apiUrl = 'https://sport-match-ccc44204aa55.herokuapp.com/events'; // URL do JSON Server
 
   constructor(private http: HttpClient) {}
+
+  createEvent(event: EventModel): Observable<EventModel> {
+    return this.http.post<EventModel>(this.apiUrl, event);
+  }
 
   getEvents(): Observable<EventModel[]> {
     return this.http.get<EventModel[]>(this.apiUrl);

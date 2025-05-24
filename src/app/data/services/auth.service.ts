@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
+import {AuthModel, CreateUserModel} from '../models/user.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  login(token: string) {
-    localStorage.setItem('userToken', token);
+  apiUrl = 'https://sport-match-ccc44204aa55.herokuapp.com/auth';
+
+  constructor(private http: HttpClient) {}
+
+  login(auth: AuthModel) {
+    return this.http.post(`https://sport-match-ccc44204aa55.herokuapp.com/auth`, auth);
   }
 
   logout() {
-    localStorage.removeItem('userToken');
+    localStorage.removeItem('idUser');
+  }
+
+  createUser(user: CreateUserModel){
+    return this.http.post(`https://sport-match-ccc44204aa55.herokuapp.com/users`, user);
   }
 
   isAuthenticated(): boolean {

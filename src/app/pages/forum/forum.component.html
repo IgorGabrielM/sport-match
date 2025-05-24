@@ -1,21 +1,18 @@
 <app-header></app-header>
+<app-modal-post *ngIf="isModalOpen" [isOpen]="isModalOpen" (closeEvent)="onModalClose()"></app-modal-post>
 <div class="w-9/12 m-auto">
   <div>
     <div class="flex justify-between items-center mt-2 bg-[color:#262D34] p-3 py-4 rounded-xl">
-      <div class="w-full flex items-center gap-4" [formGroup]="searchForm">
+      <div class="w-full flex justify-between items-center gap-4" [formGroup]="searchForm">
         <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="Imagem do usuário"
              class="w-10 h-10 object-cover rounded-full border-4"/>
-        <input type="text" id="nameEvent" formControlName="postMessage"
-               class="bg-[color:#2C353D] text-white text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-               placeholder="Escreva algo interessante" required/>
-        <button (click)="postar()" type="button"
+
+        <button (click)="this.isModalOpen = true" type="button"
                 class="h-full font-bold rounded-lg text-sm px-5 py-2.5 bg-[color:#4BAEFF] hover:bg-sky-600 border border-[color:#4BAEFF] cursor-pointer">
           Postar
         </button>
       </div>
     </div>
-    <div class="mt-10 flex flex-col gap-5">
-      <app-card-forum *ngFor="let event of events"></app-card-forum>
-    </div>
+
   </div>
 </div>

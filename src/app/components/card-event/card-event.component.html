@@ -1,14 +1,14 @@
 <div class="rounded-md bg-[color:#262D34] w-full h-[24rem]" (click)="navigateToEventDetail()">
-  <img [src]="event.imagem" alt="Imagem do envento" class="rounded-md w-full h-48 object-cover">
+  <img [src]="event.image" alt="Imagem do envento" class="rounded-md w-full h-48 object-cover">
   <div class="p-5 h-[12rem] flex flex-col gap-1">
-    <span class="text-[13px] text-gray-300">{{ event.local }}</span>
+    <span class="text-[13px] text-gray-300">{{ event.location }}</span>
     <div class="flex flex-col">
-      <span class="text-lg font-bold">{{ event.nome }}</span>
-      <span class="text-[13px] text-md font-normal">{{ event.descricao }}</span>
+      <span class="text-lg font-bold">{{ event.name }}</span>
+      <span class="text-[13px] text-md font-normal h-max">{{ event.description }}</span>
     </div>
     <div class="flex h-fit items-center mt-auto gap-1 text-[11px]">
       <i class="ph ph-clock"></i>
-      <span>{{ event.dataHora | date }}</span>
+      <span>{{ event.dateTime | date }}</span>
     </div>
   </div>
 </div>

@@ -1,10 +1,10 @@
 export class EventModel {
-  id: string;
-  nome: string;
-  dataHora: Date;
-  participantes: number;
-  local: string;
-  descricao: string;
-  imagem: string;
-  tag: string;
+  id?: string;
+  name: string;
+  dateTime: Date;
+  participantes?: number;
+  location: string;
+  description: string;
+  image: string;
+  tag?: string;
 }

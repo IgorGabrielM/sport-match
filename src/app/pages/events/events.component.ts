@@ -5,9 +5,10 @@ import {EventService} from '../../data/services/event.service';
 import {CardEventComponent} from '../../components/card-event/card-event.component';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {HeaderComponent} from '../../components/header/header.component';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {SlideEventComponent} from '../../components/slide-event/slide-event.component';
 import {HttpClientModule} from '@angular/common/http';
+import {ModalComponent} from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-events',
@@ -19,6 +20,8 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     SlideEventComponent,
     HttpClientModule,
+    ModalComponent,
+    NgIf,
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss',
@@ -28,6 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
   standalone: true
 })
 export class EventsComponent implements OnInit {
+  isModalOpen: boolean = false;
   searchForm: FormGroup;
   events: EventModel[] = [];
 
@@ -40,6 +44,12 @@ export class EventsComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.loadEvent();
+  }
+
+  onModalClose() {
+    console.log("Modal fechado");
+    this.loadEvent();
+    this.isModalOpen = false;
   }
 
   initForm(){

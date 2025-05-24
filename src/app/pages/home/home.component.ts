@@ -9,6 +9,8 @@ import {EventService} from '../../data/services/event.service';
 import {EventModel} from '../../data/models/event.model';
 import { HttpClientModule } from '@angular/common/http'
 import {SlideEventComponent} from '../../components/slide-event/slide-event.component';
+import {ImageInputComponent} from '../../components/image-input/image-input.component';
+import {ModalComponent} from '../../components/modal/modal.component';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +20,15 @@ import {SlideEventComponent} from '../../components/slide-event/slide-event.comp
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SlideEventComponent
+    ImageInputComponent,
+    SlideEventComponent,
+    ModalComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   providers: [
-    EventService
+    EventService,
+    AuthService
   ],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

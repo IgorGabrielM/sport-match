@@ -2,7 +2,7 @@
   <div class="w-9/12 py-8 flex justify-between m-auto">
     <img class="w-36 h-8" [routerLink]="['/']" src="https://firebasestorage.googleapis.com/v0/b/rent-app-d693f.appspot.com/o/logo-sport-match.png?alt=media&token=b33b82db-32ae-40b1-b57f-a0b306354c27" alt="Logo da imagem">
 
-    <div class="flex gap-[42px] items-center text-sm">
+    <div class="invisible md:visible flex gap-[42px] items-center text-sm">
       <div class="header-item" [routerLink]="['/forum']">
         <i class="ph ph-text-align-left"></i>
         <span>Fórum</span>
@@ -16,7 +16,8 @@
         <span>Meus eventos</span>
       </div>
 
-      <button (click)="login()" type="button" class="rounded-lg text-sm px-10 py-1.5 me-2 mb-2 bg-[color:#4BAEFF] font-bold hover:bg-sky-600 cursor-pointer">Login</button>
+      <button *ngIf="!isAuthenticated()" (click)="login()" type="button" class="rounded-lg text-sm px-10 py-1.5 me-2 mb-2 bg-[color:#4BAEFF] font-bold hover:bg-sky-600 cursor-pointer">Login</button>
+      <button *ngIf="isAuthenticated()" (click)="logout()" type="button" class="rounded-lg text-sm px-10 py-1.5 me-2 mb-2 bg-red-500 font-bold hover:bg-red-600 cursor-pointer">Logout</button>
     </div>
   </div>
 </header>

@@ -1,16 +1,19 @@
 <app-header></app-header>
 <div class="w-9/12 m-auto">
-  <swiper-container pagination="true">
-    <swiper-slide *ngFor="let event of events.reverse().slice(0, 3)">
-      <app-slide-event [event]="event"></app-slide-event>
-    </swiper-slide>
-  </swiper-container>
+  <div class="w-full z-0 opacity-90">
+    <swiper-container pagination="true">
+      <swiper-slide *ngFor="let event of events.reverse().slice(0, 3)">
+        <app-slide-event [event]="event"></app-slide-event>
+      </swiper-slide>
+    </swiper-container>
+  </div>
 
   <div>
+
     <div class="flex justify-between items-center mt-16">
       <span class="text-3xl font-bold">Eventos</span>
 
-      <div class="flex items-center gap-4" [formGroup]="searchForm" >
+      <div class="invisible lg:visible flex items-center gap-4" [formGroup]="searchForm" >
         <div class="w-44">
           <label for="countries" class="block mb-0.5 text-[12px] font-medium text-gray-400">Selecione a categoria</label>
           <select id="countries" formControlName="category" class="bg-transparent border border-gray-600 text-gray-400 text-sm rounded-lg focus:ring-white block w-full p-2.5">
@@ -31,7 +34,7 @@
         <button type="button" class="h-full mt-auto font-bold rounded-lg text-sm px-5 py-2.5 bg-[color:#4BAEFF] hover:bg-sky-600 border border-[color:#4BAEFF] cursor-pointer">Pesquisar</button>
       </div>
     </div>
-    <div class="mt-10 grid grid-cols-4 gap-5">
+    <div class="mt-10 lg:grid lg:grid-cols-4 flex flex-col gap-5">
       <app-card-event *ngFor="let event of events" [event]="event"></app-card-event>
     </div>
   </div>

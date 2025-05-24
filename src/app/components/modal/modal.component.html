@@ -1,0 +1,31 @@
+<div [class]="'fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center ' + (isOpen ? 'block' : 'hidden')"></div>
+
+<div [class]="'fixed inset-0 flex items-center justify-center w-full h-full z-50 ' + (isOpen ? 'block' : 'hidden')">
+  <div class="relative p-4 w-full max-w-2xl bg-white rounded-lg shadow-sm dark:bg-gray-700">
+    <div class="flex items-center justify-between p-4 border-b rounded-t dark:border-gray-600 border-gray-200">
+      <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Criar evento</h3>
+      <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" (click)="closeModal()">
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+        </svg>
+        <span class="sr-only">Fechar modal</span>
+      </button>
+    </div>
+    <div class="p-4 space-y-4">
+      <div class="w-full flex flex-col gap-3 my-2">
+        <input [(ngModel)]="nome" type="text" id="title" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Titulo" required />
+        <textarea [(ngModel)]="descricao" id="descricao" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descrição"></textarea>
+        <input [(ngModel)]="local" type="text" id="local" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Local" required />
+        <input [(ngModel)]="dataHora" type="date" id="date" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Data" required />
+
+        <app-image-input *ngIf="!imagem" (imageUploaded)="onImageReceived($event)"></app-image-input>
+        <img *ngIf="imagem" [src]="imagem" alt="imagem enviada" class="w-full h-48 object-cover rounded-lg">
+      </div>
+
+    </div>
+    <div class="flex items-center justify-between p-4 border-t border-gray-200 rounded-b dark:border-gray-600">
+      <button (click)="closeModal()" class="text-white bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm px-5 py-2.5">Fechar</button>
+      <button (click)="sendEvent()" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5">Criar</button>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,9 @@
 <div class="relative">
-  <img [src]="event.imagem" alt="Imagem do evento" class="w-screen object-cover object-center">
+  <img [src]="event.image" alt="Imagem do evento" class="w-screen object-cover object-center">
 
   <div class="absolute z-10">
-    <p class="text-xl font-extrabold">{{ event.nome }}</p>
-    <p>{{ event.descricao }}</p>
+    <p class="text-xl font-extrabold">{{ event.name }}</p>
+    <p>{{ event.description }}</p>
 
     <button (click)="navigateToEvent()" type="button" class="rounded-lg text-sm px-10 py-1.5 me-2 mt-2 bg-[color:#4BAEFF] font-bold hover:bg-sky-600 cursor-pointer">
       Ver mais

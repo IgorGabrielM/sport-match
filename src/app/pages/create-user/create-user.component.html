@@ -3,6 +3,10 @@
     <form [formGroup]="loginForm" class="form">
       <img src="https://firebasestorage.googleapis.com/v0/b/rent-app-d693f.appspot.com/o/logo-sport-match.png?alt=media&token=b33b82db-32ae-40b1-b57f-a0b306354c27" alt="Logo da imagem">
       <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-white">Nome</label>
+        <input type="text" id="name" formControlName="name" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="Usuário" required />
+      </div>
+      <div>
         <label for="email" class="block mb-2 text-sm font-medium text-white">Email</label>
         <input type="text" id="email" formControlName="email" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="email@gmail.com" required />
       </div>
@@ -10,8 +14,7 @@
         <label for="senha" class="block mb-2 text-sm font-medium text-white">Senha</label>
         <input type="password" id="senha" formControlName="password" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg block w-full p-2.5 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="*******" required />
       </div>
-      <span class="w-full text-end text-sm text-sky-600 cursor-pointer" [routerLink]="['../create-user']">Crie uma conta</span>
-      <button [disabled]="!loginForm?.valid" (click)="login()" type="button" class="mt-5 disabled:opacity-60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 disabled:hover:bg-blue-600 hover:bg-blue-700 cursor-pointer">Entrar</button>
+      <button [disabled]="!loginForm?.valid" (click)="createUser()" type="button" class="mt-5 disabled:opacity-60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 bg-blue-600 disabled:hover:bg-blue-600 hover:bg-blue-700 cursor-pointer">Entrar</button>
     </form>
   </div>
   <div class="bg-color"></div>
