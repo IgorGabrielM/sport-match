@@ -2,11 +2,13 @@ import {Component, Input} from '@angular/core';
 import {EventModel} from '../../data/models/event.model';
 import {DatePipe} from '@angular/common';
 import {Router} from '@angular/router';
+import {StripMarkdownPipe} from '../../data/pipes/strip-markdown.pipe';
 
 @Component({
   selector: 'app-card-event',
   imports: [
-    DatePipe
+    DatePipe,
+    StripMarkdownPipe
   ],
   templateUrl: './card-event.component.html',
   styleUrl: './card-event.component.scss',

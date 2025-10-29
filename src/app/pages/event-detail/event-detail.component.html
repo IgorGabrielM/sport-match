@@ -1,31 +1,29 @@
 <app-header></app-header>
-<div class="w-9/12 m-auto">
-  <div class="evento-container glass-effect rounded-[0px]" [style.background-image]="'url(' + event.image + ')'">
-    <div class="relative w-full h-80 flex justify-around items-center">
+<div *ngIf="event" class="w-9/12 m-auto">
+  <div class="evento-container glass-effect rounded-[0px]" [style.background-image]="'url(' + event?.image + ')'">
+    <div class="relative h-80 w-11/12 mx-auto flex justify-around gap-6 items-center">
         <div class="flex flex-col gap-2">
           <p class="w-fit font-bold border-[0.5px] border-[color:#4BAEFF] rounded-full text-[10px] py-1 px-2.5 mb-1">Com especialistas</p>
-          <span class="text-[13px] text-gray-200">{{ event.location }}</span>
+          <span class="text-[13px] text-gray-200">{{ event?.location }}</span>
           <div class="flex flex-col">
-            <span class="text-lg font-bold">{{ event.name }}</span>
-            <span class="text-[13px] text-md font-normal">{{ event.description }}</span>
+            <span class="text-lg font-bold">{{ event?.name }}</span>
           </div>
           <div class="flex h-fit items-center mt-auto gap-1 text-[11px]">
             <i class="ph ph-clock"></i>
-            <span>{{ event.dateTime | date }}</span>
+            <span>{{ event?.dateTime | date }}</span>
           </div>
           <button (click)="participar()" type="button" class="w-fit rounded-md text-[10px] px-4 py-2 bg-[color:#4BAEFF] font-bold hover:bg-sky-600 cursor-pointer">Marcar presença</button>
         </div>
-        <img [src]="event.image" alt="Imagem do evento" class="object-cover w-4/12 h-48 rounded-sm">
+        <img [src]="event?.image" alt="Imagem do evento" class="object-cover w-4/12 min-w-[300px] h-48 rounded-md">
     </div>
   </div>
 
-  <div class="my-20">
+  <div class="my-8">
     <span class="font-bold text-xl">Descrição do evento</span>
-    <p class="mt-5 text-sm font-medium">
-      {{ event.description }}
-    </p>
+    <markdown [data]="event.description"></markdown>
+
   </div>
-  <div class="mt-10">
+  <div class="mt-16">
     <span class="font-bold text-xl">Eventos relacionados</span>
     <div class="mt-2 grid grid-cols-4 gap-5">
       <app-card-event *ngFor="let event of events" [event]="event"></app-card-event>

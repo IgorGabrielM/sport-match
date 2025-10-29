@@ -7,7 +7,7 @@ import {EventModel} from '../models/event.model';
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'https://sport-match-ccc44204aa55.herokuapp.com/events'; // URL do JSON Server
+  private apiUrl = 'http://localhost:3000/events'; // URL do JSON Server
 
   constructor(private http: HttpClient) {}
 

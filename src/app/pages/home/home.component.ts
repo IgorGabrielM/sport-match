@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http'
 import {SlideEventComponent} from '../../components/slide-event/slide-event.component';
 import {ImageInputComponent} from '../../components/image-input/image-input.component';
 import {ModalComponent} from '../../components/modal/modal.component';
+import {debounceTime} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -20,9 +21,7 @@ import {ModalComponent} from '../../components/modal/modal.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ImageInputComponent,
     SlideEventComponent,
-    ModalComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -48,6 +47,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.loadEvent();
+    this.setupSearchListener();
   }
 
   initForm(){
@@ -66,10 +66,15 @@ export class HomeComponent implements OnInit {
 
   filterEvents() {
     const { address, nameEvent } = this.searchForm.value;
-
     this.events = this.allEvents.filter(event =>
       event.location.toLowerCase().includes(address.toLowerCase()) &&
       event.name.toLowerCase().includes(nameEvent.toLowerCase())
     );
+  }
+
+  setupSearchListener() {
+    this.searchForm.valueChanges
+      .pipe(debounceTime(300))
+      .subscribe(() => this.filterEvents());
   }
 }

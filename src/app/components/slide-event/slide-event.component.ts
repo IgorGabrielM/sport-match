@@ -2,11 +2,13 @@ import {Component, Input} from '@angular/core';
 import {EventModel} from '../../data/models/event.model';
 import {NgStyle} from '@angular/common';
 import {Router} from '@angular/router';
+import {StripMarkdownPipe} from '../../data/pipes/strip-markdown.pipe';
 
 @Component({
   selector: 'app-slide-event',
   imports: [
-    NgStyle
+    NgStyle,
+    StripMarkdownPipe
   ],
   templateUrl: './slide-event.component.html',
   styleUrl: './slide-event.component.scss',
