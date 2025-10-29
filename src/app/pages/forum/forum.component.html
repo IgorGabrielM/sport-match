@@ -33,7 +33,7 @@
         <div class="flex flex-col gap-2">
           <p class="font-bold text-lg">{{ post.title }}</p>
           <p class="text-sm">{{ post.text }}</p>
-          <img *ngIf="post.imageUrl" [src]="post.imageUrl" alt="imagem enviada" class="w-full h-64 object-cover rounded-lg">
+          <img *ngIf="post?.imageUrl" [src]="post.imageUrl" alt="imagem enviada" class="w-full h-64 object-cover rounded-lg">
         </div>
 
         <div class="w-full flex justify-between items-end mt-4 pt-3 pb-1">

@@ -7,6 +7,8 @@ import {EventService} from '../../data/services/event.service';
 import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {CardEventComponent} from '../../components/card-event/card-event.component';
 import {AuthService} from '../../data/services/auth.service';
+import {GeminiService} from '../../data/services/gemini.service';
+import {MarkdownModule} from 'ngx-markdown';
 
 @Component({
   selector: 'app-event-detail',
@@ -16,7 +18,8 @@ import {AuthService} from '../../data/services/auth.service';
     DatePipe,
     CardEventComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    MarkdownModule
   ],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.scss',
@@ -35,6 +38,7 @@ export class EventDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private eventService: EventService,
     private authService: AuthService,
+    private geminiService: GeminiService
   ) {
   }
 
@@ -59,5 +63,11 @@ export class EventDetailComponent implements OnInit {
         this.showToast = false;
       }, 3000);
     });
+  }
+
+  montarTreino() {
+    this.geminiService.generateText(this.event.description, this.event.dateTime).subscribe((response) => {
+      console.log('res', response);
+    })
   }
 }

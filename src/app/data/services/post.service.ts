@@ -8,7 +8,7 @@ import {PostModel} from '../models/post.model';
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'https://sport-match-ccc44204aa55.herokuapp.com/posts'; // URL do JSON Server
+  private apiUrl = 'http://localhost:3000/posts'; // URL do JSON Server
 
   constructor(private http: HttpClient) {}
 
