@@ -2,7 +2,7 @@
 <div class="w-9/12 m-auto">
   <div class="w-full z-0 opacity-90">
     <swiper-container pagination="true">
-      <swiper-slide *ngFor="let event of allEvents.slice(0, 3)">
+      <swiper-slide *ngFor="let event of allEvents.slice(0, 3).reverse()">
         <app-slide-event [event]="event"></app-slide-event>
       </swiper-slide>
     </swiper-container>

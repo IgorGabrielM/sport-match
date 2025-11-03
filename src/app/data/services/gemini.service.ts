@@ -16,13 +16,9 @@ export class GeminiService {
     if (!environment.geminiApiKey) {
       console.error("A chave API do Gemini não está definida. Use um backend (Opção 1) para produção!");
     }
-    // O SDK moderno é inicializado de forma síncrona, mas a chamada à API é assíncrona.
     this.ai = new GoogleGenerativeAI(environment.geminiApiKey);
   }
 
-  /**
-   * Helper para formatar a data de forma amigável para a IA
-   */
   private formatDate(date: Date): string {
     date = new Date(date);
     const year = date.getFullYear();
@@ -31,30 +27,43 @@ export class GeminiService {
     return `${day}/${month}/${year}`;
   }
 
-  /**
-   * Envia um prompt de texto para o modelo Gemini e retorna a resposta.
-   */
   generateText(descricaoEvento: string, dataEvento: Date): Observable<string> {
     const model = this.ai.getGenerativeModel({ model: this.modelName });
     const dataFormatada = this.formatDate(dataEvento);
 
-    const fullPrompt = `Sou iniciante no esporte, quero que monte um treino para que eu possa participar desse evento:
-      ${descricaoEvento}
-      Vou participar desse evento no dia ${dataFormatada}.
-      Responda de forma curta e objetiva. Inclua as principais fases do treino.`;
+    const fullPrompt = `
+    Haja como um preparador físico chamado Leo, com anos de experiencia em preparação de pessoas iniciantes no esporte ate atletas com foco no desempenho em competições.
 
-    // A chamada 'generateContent' retorna uma Promise.
-    console.log('chamou');
+# Objetivo
+Você deve montar um treino para uma prova especificada com foco no treino que pode ser desenvolvido ate a data do evento. Leve em consideração que todos os usuários são iniciantes a intermediários, mas não diga a eles.
+# Instruções
+- Passo 1 - Analise a descrição do evento: ${descricaoEvento}
+- Passo 2 - Monte um treino com o foco em realizar esse evento até a data ${dataFormatada}
+- Passo 3 - Estruture esse plano de treino da foma mais clara, simples e resumida possivel
+- Passo 4 - Organize esse plano em uma divisao de treinos e apresente esse plano em tópicos
+  - Ex: Treino A: Corrida longa duração 8km
+        Treino B: Corrida em velocidade
+        Treino C: Simulação de prova
+- Passo 5: Apresente uma rotina de treino.
+   - Ex: Segunda - Quarta: Treino A;
+         Terça - Quinta: Treino B;
+         Quarta - Sabado: Treino C;
+         Sexta - Domingo: Descanso recuperativo;
+# Lembretes
+- Sempre que for quebrar uma linha use '<br>'.
+- NUNCA cite os "passos" nem as "mensagens" ou variaveis como "{{ melhorias }}", elas não tem impacto para o usuário e servem apenas para melhor organização;
+- Não se apresente, apenas envie o plano de treinos da foma mais simples e sucinta possível.
+- Ao fim de toda mensagem diga que é um agente de IA e indique que o usuário busque apoio com um profissional do esporte.
+- Responda como se estivesse em um chat de mensagem, sem caracteres epeciais como ** ou ##, de espaço entre as linhas para facilitar a legibilidade
+- Responda da forma mais sucinta possivel, sua mensagem será mostrada em um chat de mensagem portanto o comprimento da repsosta deve ser pensado nessa midia
+    `
     const promise = model.generateContent(fullPrompt)
       .then((result: GenerateContentResult) => {
-        console.log(result);
-        // O SDK do Gemini v2 tem a propriedade .text, que é a forma mais fácil de obter a string
         return result.response.text();
       });
 
-    // Converte a Promise em um Observable para se integrar ao Angular
     return from(promise).pipe(
-      map(text => text.trim()) // Limpa e retorna o texto
+      map(text => text.trim().replace(/\n/g, '<br>'))
     );
   }
 }
