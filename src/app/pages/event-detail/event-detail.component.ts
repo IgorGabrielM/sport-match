@@ -4,7 +4,7 @@ import {HeaderComponent} from '../../components/header/header.component';
 import {EventModel} from '../../data/models/event.model';
 import {HttpClientModule} from '@angular/common/http';
 import {EventService} from '../../data/services/event.service';
-import {DatePipe, NgForOf, NgIf} from '@angular/common';
+import {DatePipe, NgClass, NgForOf, NgIf} from '@angular/common';
 import {CardEventComponent} from '../../components/card-event/card-event.component';
 import {AuthService} from '../../data/services/auth.service';
 import {GeminiService} from '../../data/services/gemini.service';
@@ -19,7 +19,8 @@ import {MarkdownModule} from 'ngx-markdown';
     CardEventComponent,
     NgForOf,
     NgIf,
-    MarkdownModule
+    MarkdownModule,
+    NgClass,
   ],
   templateUrl: './event-detail.component.html',
   styleUrl: './event-detail.component.scss',
@@ -33,6 +34,10 @@ export class EventDetailComponent implements OnInit {
   event: EventModel;
   events: EventModel[] = [];
   showToast: boolean = false;
+  drowerVisible: boolean = false;
+  user: any;
+  loading = false;
+  responseIA: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,8 +51,16 @@ export class EventDetailComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.eventService.findEvents(id).subscribe((event) => {
       this.event = event;
+      console.log(event)
     })
     this.loadEvent();
+    this.getUser();
+  }
+
+  getUser(){
+    this.authService.getUser().subscribe((user) => {
+      this.user = user;
+    })
   }
 
   loadEvent() {
@@ -63,11 +76,15 @@ export class EventDetailComponent implements OnInit {
         this.showToast = false;
       }, 3000);
     });
+    this.drowerVisible = true;
+    this.montarTreino();
   }
 
   montarTreino() {
+    this.loading = true;
     this.geminiService.generateText(this.event.description, this.event.dateTime).subscribe((response) => {
-      console.log('res', response);
+      this.responseIA = response;
+      this.loading = false;
     })
   }
 }
