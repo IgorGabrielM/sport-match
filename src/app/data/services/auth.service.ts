@@ -6,12 +6,12 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  apiUrl = 'http://localhost:3000/auth';
+  apiUrl = 'https://sport-match-server-b9dc84641b20.herokuapp.com/auth';
 
   constructor(private http: HttpClient) {}
 
   login(auth: AuthModel) {
-    return this.http.post(`http://localhost:3000/auth`, auth);
+    return this.http.post(`https://sport-match-server-b9dc84641b20.herokuapp.com/auth`, auth);
   }
 
   logout() {
@@ -19,11 +19,11 @@ export class AuthService {
   }
 
   createUser(user: CreateUserModel){
-    return this.http.post(`http://localhost:3000/users`, user);
+    return this.http.post(`https://sport-match-server-b9dc84641b20.herokuapp.com/users`, user);
   }
 
   getUser(){
-    return this.http.get(`http://localhost:3000/users/${localStorage.getItem('idUser')}`);
+    return this.http.get(`https://sport-match-server-b9dc84641b20.herokuapp.com/users/${localStorage.getItem('idUser')}`);
   }
 
   isAuthenticated(): boolean {
