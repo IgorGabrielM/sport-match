@@ -23,6 +23,7 @@ export class CardEventComponent {
   }
 
   navigateToEventDetail(){
+    console.log('teste')
     this.router.navigate(['event-detail', this.event.id])
   }
 
